@@ -34,7 +34,8 @@ export default function Widget() {
         inputZone.value = '';
 
         const date = Date.now();
-        const watchZone = date + (zone * 3600 * 1000);
+        const utc = new Date().getTimezoneOffset()
+        const watchZone = date + (utc * 60 * 1000) + (zone * 3600 * 1000);
 
         const index = watches.findIndex(watch => watch.title === title);
 
